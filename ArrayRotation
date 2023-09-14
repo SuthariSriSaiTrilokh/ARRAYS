@@ -1,0 +1,46 @@
+public class Solution
+{
+    public static int[] rotateArray(int []a, int x, String dir) {
+      int n = a.length;
+       x = x%n;
+
+    if (x>0 && dir.equals("LEFT"))
+    { 
+      rotateLeft(a,n,x);
+    }
+   else if(x>0 && dir.equals("RIGHT"))
+    {
+       rotateRight (a,n,x);
+    }
+    return a;
+}
+public static void rotateRight (int[] A, int n, int X)
+  {
+    reversebetween (A,0,n);
+    reversebetween (A,0,X);
+    reversebetween (A,X,n);
+  }
+
+public static void rotateLeft(int[] A, int n, int X)
+  {
+    reversebetween (A,0,n);
+    reversebetween (A, 0, n-X);
+    reversebetween(A, n-X,n);
+  }
+public static void swap(int[] A, int l, int r)
+  {
+    int temp = A[l];
+    A[l] = A[r];
+    A[r] = temp;
+  }
+public static void reversebetween(int[] A, int l, int r)
+  {
+    r--;
+    int len = (r-l)/2;
+    for(int i=0;i<=len;i++){
+        swap (A,l,r);
+      l++;
+      r--;
+    }
+  }
+}
